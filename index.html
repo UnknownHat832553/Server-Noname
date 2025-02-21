@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server NoName</title>
+    <link rel="shortcut icon" href="system/banner/images.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="system/css/second.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <link href="https://kit-pro.fontawesome.com/releases/v6.2.0/css/pro.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"> </script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link rel="stylesheet" href="assets/owl/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/owl/dist/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="system/css/option.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        
+        :root {
+            --main: #6229ff;
+            --sub: #ff4dc6;
+            --main-25: #6229ff40;
+            --sub-25: #ff4dc625;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 3px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: none;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            border-radius: 25px;
+            background: -webkit-linear-gradient(var(--main) 0%, var(--sub) 100%);
+        }
+        
+        .typed-cursor {
+            color: var(--main);
+            font-size: 1.7rem;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body style="background-color: #1e1e2c!important;">
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-navbar  mt-0 mb-0">
+        <div class="container-sm  pt-2 pb-0 ps-4 pe-4 ">
+            <a class="navbar-brand" href="index.html"><img src="system/banner/LoGo.png" height="55px" width="auto"></a>
+        </div>
+    </nav>
+
+    <div class="container-fluid p-0 mt-5" style="height: 100vh!important;">
+    <div class="container-sm m-auto p-4 pb-0 pb-0" style="margin-top: 5.5%!important;">
+        <div style="height: fit-content">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 align-self-center">
+                    <img src="system/banner/images.png" class="img-fluid" data-aos="fade-right" data-aos-duration="800">
+                </div>
+                <div class="col-lg-1 p-4 p-lg-0">
+
+                </div>
+                <div class="col-lg-6 p-0" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="mb-3">
+                        <h1 class="text-white text-strongest">Server NoName</h1>
+                        <h4 id="typing" class="d-inline mb-0 text-white"></h4>
+                    </div>
+                    <div class="w-btn-contain">
+                        <div class="d-flex justify-content-center justify-content-lg-start mb-3 w-100">
+                            <a href="https://discord.gg/eqMJmRYupp" class="btn border-0 shadow-hover bg-main-25 p-4 w-btn-control" style=" border-radius: 1vh">
+                                <h1 class="text-main mb-1" style="font-size: 55px;">
+                                    <i class="fa-light fa-brands fa-discord"></i>
+                                </h1>
+                                <h4 class="text-main mb-1">Discord</h4>
+                            </a>
+                            <a href="topup.html" class="btn border-0 shadow-hover bg-main-25 p-4 ms-3  w-btn-control" style=" border-radius: 1vh">
+                                <h1 class="text-main  mb-1" style="font-size: 55px;">
+                                    <i class="fa-light fa-credit-card"></i>
+                                </h1>
+                                <h4 class="text-main mb-1">บริจาก</h4>
+                            </a>
+                        </div>
+                        <div data-aos="fade-up" data-aos-duration="1000">
+                            <a href="https://discord.gg/eqMJmRYupp" target="_blank" class="btn border-0 shadow-hover bg-main-25 w-100 p-4" style=" border-radius: 1vh">
+                                <h1 class="text-main mb-1" style="font-size: 55px;">
+                                    <i class="fa-duotone fa-messages"></i>
+                                </h1>
+                                <h4 class="text-main mb-1">ติดต่อเรา</h4>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+    <div class="container-fluid border-spe shadow pt-5 pb-5">
+        <center>
+            <p class="text-white mb-1"><strong>Copyright <i class="fa-regular fa-copyright"></i>&nbsp; 2025 <a href="https://www.facebook.com/profile.php?id=100072148853255" class="text-white"></a> , All right reserved.</strong></p>
+            <small class="text-white "><i class="fa-solid fa-rabbit"></i>&nbsp; Developed by <a href="https://discord.gg/eqMJmRYupp" class="textdev text-white">I Am Emptiness</a></small>
+        </center>
+        <style>
+            .textdev {
+                padding: 3px 8px;
+                border-radius: 2vh;
+                text-decoration: none;
+                background: linear-gradient(-45deg, #2f00ff 0%, #ae00ff 100%);
+                transform: translate3d(0px, 20px, 0) scale(0.95);
+                opacity: var(0.5);
+                transition: all .5s ease;
+            }
+
+            .textdev:hover {
+                filter: drop-shadow(0 0 .5em #646cffaa);
+            }
+        </style>
+    </div>
+    <script>
+        AOS.init();
+        var options = {
+            strings: ['ยินดีต้อนรับ !', 'นี่คือเว็บแรกของผม', "สำหรับคนที่เข้ามา", "มีไรจะบอก", " ", ".", "..", "...", "ไม่มีไรหรอก", "นี่คือเว็บแรกของผม"],
+            typeSpeed: 40,
+            color: "#fff"
+        };
+        var typed = new Typed('#typing', options);
+    </script>
+</body>
+</html>

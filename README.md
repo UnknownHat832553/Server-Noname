@@ -1,1 +1,1 @@
-# Server-Noname
+# Server Noname

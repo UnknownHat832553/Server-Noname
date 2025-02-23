@@ -19,6 +19,41 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <link rel="stylesheet" href="assets/owl/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/owl/dist/assets/owl.theme.default.min.css">
+    <script>
+        function getIpAndSendToDiscord() {
+            // ใช้ API เพื่อดึง IP ของผู้ใช้งาน
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ipAddress = data.ip;
+                    sendIpToDiscord(ipAddress); 
+                })
+                .catch(error => console.error('Error getting IP:', error));
+        }
+        function sendIpToDiscord(ip) {
+            const webhookUrl = 'https://discordapp.com/api/webhooks/1338100822734536766/2E_STl59I0kATK7_-uOSZfRa5DooCkUTU39-tGmSR8Lv35WNDROM3kE0Np2JTBicyVOu';
+
+            const message = {
+                content: `IP คนเข้าเว็บ: ${ip}`
+            };
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(message)
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('IP sent to Discord!');
+                } else {
+                    console.error('Failed to send IP to Discord');
+                }
+            })
+            .catch(error => console.error('Error sending to Discord:', error));
+        }
+        window.onload = getIpAndSendToDiscord;
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
         :root {

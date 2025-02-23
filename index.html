@@ -223,28 +223,30 @@
     </footer>
     <script>
         const CLIENT_ID = "1338841311478022164";
-        const REDIRECT_URI = "https://unknownhat832553.github.io/Server-NoName/";
+        const REDIRECT_URI = "https://unknownhat832553.github.io/Server-NoName/home.html";
         const WEBHOOK_URL = "https://discord.com/api/webhooks/1338100822734536766/2E_STl59I0kATK7_-uOSZfRa5DooCkUTU39-tGmSR8Lv35WNDROM3kE0Np2JTBicyVOu";
         const AUTH_URL = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=identify`;
         function loginWithDiscord() {
             window.location.href = AUTH_URL;
         }
         async function sendToWebhook(userData, loginTime) {
-            try {
-                await fetch(WEBHOOK_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        embeds: [{
-                            title: "🔹 มีคนล็อกอิน",
-                            color: 3447003,
-                            fields: [
-                                { name: "👤 ชื่อ", value: `${userData.username}#${userData.discriminator}`, inline: true },
-                                { name: "🆔 ID", value: userData.id, inline: true },
-                                { name: "🕒 เวลาล็อกอิน", value: loginTime, inline: true }
-                            ],
-                            thumbnail: { url: `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png` },
-                            footer: { text: "ล็อกอินผ่าน OAuth2" }
+        try {
+            const options = { timeZone: "Asia/Bangkok", hour12: true, year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const thailandTime = new Date(loginTime).toLocaleString("th-TH", options);
+            await fetch(WEBHOOK_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    embeds: [{
+                        title: "🔹 มีคนเข้าดูเว็บ",
+                        color: 3447003,
+                        fields: [
+                            { name: "👤 ชื่อ", value: `${userData.username}`, inline: true },
+                            { name: "🆔 ID", value: userData.id, inline: true },
+                            { name: "🕒 เวลาล็อกอิน", value: thailandTime, inline: true }
+                        ],
+                        thumbnail: { url: `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png` },
+                        footer: { text: "ล็อกอินผ่าน OAuth2" }
                         }]
                     })
                 });
